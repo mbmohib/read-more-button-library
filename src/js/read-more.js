@@ -22,7 +22,7 @@ export function ReadMoreBtn(config) {
     this.init = function() {
         let articles = this.articles;
 
-        //Make array, If selectors method is not return array
+        //Make array, If selectors method is not returning array
         if (!articles.length) {
             articles = Array.from(articles);
             articles.push(this.articles)
@@ -46,42 +46,33 @@ export function ReadMoreOverlay (config) {
     this.articles = config.selectors,
     this.text = config.text || 'Read More',
     this.length = config.length || 300,
+    this.sliceLength = config.sliceLength || 100,
+    this.maxHeightValue = config.maxHeight || 1000,
+    this.overlayDefaultStyle = config.overlayStyle == undefined ? true : false,
+    this.overlayStyle = `
+        position: absolute; 
+        bottom: 0;
+        width: 100%;
+        height: 15px;
+        background: linear-gradient(rgba(255, 255, 255, .6), #fff);
+    `;
 
     this.expandContent = function(element, overlay, btn) {
-        element.style.maxHeight = '1000px';
+        element.style.maxHeight = this.maxHeightValue + 'px';
         overlay.style.display = 'none';
         btn.style.display = 'none';
     }
-
-    this.createBtn = function() {
-        const readMoreDiv = document.createElement('div');
-        readMoreDiv.setAttribute('class', 'article__btn');
-        readMoreDiv.innerHTML = this.text;
-        return readMoreDiv;
-    }
     
-    this.createArticleDiv = function() {
-        const wrapperDiv = document.createElement('div');
-        wrapperDiv.setAttribute('class', 'article__content--wrapper');
-        return wrapperDiv;
-    }
-
-    this.createArticleContentDiv = function() {
-        const ContentDiv = document.createElement('div');
-        ContentDiv.setAttribute('class', 'article__content');
-        return ContentDiv;
-    }
-    
-    this.createOverlayDiv = function() {
-        const overlayDiv = document.createElement('div');
-        overlayDiv.setAttribute('class', 'article__overlay');
-        return overlayDiv;
+    this.createDiv = function(className) {
+        const div = document.createElement('div');
+        div.setAttribute('class', className);
+        return div;
     }
     
     this.init = function() {
         let articles = this.articles;
 
-        //Make array, If selectors method is not return array
+        //Make array, If selectors method is not returning array
         if (!articles.length) {
             articles = Array.from(articles);
             articles.push(this.articles)
@@ -91,20 +82,32 @@ export function ReadMoreOverlay (config) {
             if (article.textContent.length > this.length) {
                 article.setAttribute('class', 'article');
 
-                const articleDiv = this.createArticleDiv();
-                const contentDiv = this.createArticleContentDiv();
-                const overlayDiv = this.createOverlayDiv();
-                const readMorebtn = this.createBtn();
-
+                //Creating structure
+                const wrapperDiv = this.createDiv('article__content--wrapper');
+                const contentDiv = this.createDiv('article__content');
+                const overlayDiv = this.createDiv('article__overlay');
+                const readMoreDiv = this.createDiv('article__btn');
+                
                 contentDiv.innerHTML = article.innerHTML;
                 article.innerHTML = '';
+                readMoreDiv.innerHTML = this.text;
 
-                articleDiv.appendChild(contentDiv);
-                articleDiv.appendChild(overlayDiv);
-                article.appendChild(articleDiv);
-                article.appendChild(readMorebtn);
+                //Must have style for creating overlay effect with read more
+                contentDiv.style.maxHeight = this.sliceLength + 'px';
+                contentDiv.style.overflow = 'hidden';
+                wrapperDiv.style.position = 'relative';
 
-                readMorebtn.onclick = () => this.expandContent(contentDiv, overlayDiv, readMorebtn);
+                //Default overlay style
+                if (this.overlayDefaultStyle) {
+                    overlayDiv.style.cssText = this.overlayStyle;
+                }
+
+                wrapperDiv.appendChild(contentDiv);
+                wrapperDiv.appendChild(overlayDiv);
+                article.appendChild(wrapperDiv);
+                article.appendChild(readMoreDiv);
+
+                readMoreDiv.onclick = () => this.expandContent(contentDiv, overlayDiv, readMoreDiv);
             }
         });
     }

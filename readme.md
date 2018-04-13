@@ -17,7 +17,7 @@ This is a very simple plugin for creating "Read More" buttons for long documents
 
 ```
 <div class="selectors">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quas exercitationem! Eligendi suscipit ipsam optio ab cum libero nisi, nam beatae velit laborum tempore. Provident neque sunt necessitatibus blanditiis reprehenderit.
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit......
 </div>
 ```
 

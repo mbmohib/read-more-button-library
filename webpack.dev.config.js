@@ -6,7 +6,7 @@ module.exports = {
     entry: './src/js/bootstrap.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'read-more.js',
         publicPath: '/dist'
     },
     devServer: {

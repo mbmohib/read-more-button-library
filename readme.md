@@ -1,37 +1,76 @@
-# Webpack Boilarplate
+# Read More Button Library
 
-https://mbmohib.github.io/read-more-button-library/
+This is a very simple library for creating "Read More" buttons for long documents build with Vanila JS 
 
-This is a simple **Webpack Boilarplate**. That
+#### [Demo](https://mbmohib.github.io/read-more-button-library/)
 
-  - Compile Latest JS using Babel
-  - Compile SASS
-  - Auto Reload when css or js change
-  - Auto Prefix when needed
-  - Minify JS using UglifyJSPlugin for Production
-  - Minify CSS using OptimizeCssAssetsPlugin for Production
-  - Seperated Config for Dev & Prod 
+  - There are currently two type of "Read More" styles 1. "Overlay Effect with Read More" 2. Simple "Read More"
+  - You can change the document length for excerpt and button text
+  - For "Overlay Effect with Read More" necessary style is applied by JS, you can disable it
+  - Add polyfill for support older browser
+  
+
+# Instruction
+    
+1. Copy 'read-more.js' from dist folder into assets.
+2. Your HTML Structure should be : 
+
+```json
+<div class="selectors">
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quas exercitationem! Eligendi suscipit ipsam optio ab cum libero nisi, nam beatae velit laborum tempore. Provident neque sunt necessitatibus blanditiis reprehenderit.
+</div>
+
+```  
+3. Add this line to the top of the documents
+
+    
+```json
+import { ReadMoreOverlay, ReadMoreBtn } from './read-more';
+````
+4. Initiate: 
+
+For Overlay Effect : 
+```json
+new ReadMoreOverlay({
+    selectors: elements,
+    readMoreBtnText: 'Read Full Content',
+    length: 400,
+    sliceLength: 200,
+});
+```  
+
+For Simple Effect : 
+```json
+new ReadMoreBtn({
+    selectors: elements,
+    readMoreBtnText: 'Read More',
+    length: 500,
+    sliceLength: 300
+});
+```  
 
 
-### Installation
-```sh
-Make sure you have node installed
-clone this repo using "git clone https://mbmohib@bitbucket.org/mbmohib/webpack-boilarplate.git"
-cd webpack-boilarplate
-run "npm  install"
-run "npm run dev" for development server
-run "npm run build" for production
-```
+### Option
+
+| Option | Default Value | Value |
+| ------ | ------ | ------ |
+| selectors | null | Provide appropriate selectors |
+| readMoreBtnText | Read More | String
+| length | 300 | integer
+| sliceLength | 100 | integer
+| overlayStyle | null | false (This will prevent adding style to Overlay Div)
+| maxHeight | 1000 | integer
 
 
-### Todos
+# TODO
 
- - Config for deterministic hash
- - Add html auto reload
-
-License
-----
-
-MIT
+  - Remove duplicate code
+  - Convert into Class from Object
+  - Create another "Read More" style
+  - Create proper documentation
+  - Support jQuery selectors
 
 
+## License
+
+#### [MIT](./LICENSE)

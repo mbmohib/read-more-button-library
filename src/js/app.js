@@ -6,7 +6,7 @@ const articlesTwo = document.querySelectorAll('.two article');
 
 new ReadMoreOverlay({
     selectors: articlesOne,
-    text: 'Read Full Content',
+    readMoreBtnText: 'Read Full Content',
     length: 400,
     sliceLength: 200,
     // overlayStyle: false
@@ -14,7 +14,7 @@ new ReadMoreOverlay({
 
 new ReadMoreBtn({
     selectors: articlesTwo,
-    text: 'Read More',
+    readMoreBtnText: 'Read More',
     length: 500,
     sliceLength: 300
 });

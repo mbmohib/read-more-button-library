@@ -1,6 +1,6 @@
 export function ReadMoreBtn(config) {
     this.articles = config.selectors,
-    this.text = config.text || 'Read More',
+    this.text = config.readMoreBtnText || 'Read More',
     this.length = config.length || 300,
     this.sliceLength = config.sliceLength || 100,
 
@@ -44,7 +44,7 @@ export function ReadMoreBtn(config) {
 
 export function ReadMoreOverlay (config) {
     this.articles = config.selectors,
-    this.text = config.text || 'Read More',
+    this.text = config.readMoreBtnText || 'Read More',
     this.length = config.length || 300,
     this.sliceLength = config.sliceLength || 100,
     this.maxHeightValue = config.maxHeight || 1000,

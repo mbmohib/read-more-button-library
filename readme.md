@@ -1,8 +1,8 @@
 # Read More Button Library
 
-This is a very simple library for creating "Read More" buttons for long documents build with Vanila JS 
+This is a very simple plugin for creating "Read More" buttons for long documents build with Vanila JS 
 
-#### [Demo](https://mbmohib.github.io/read-more-button-library/)
+#### [Demo](https://mbmohib.github.io/read-more-button-plugin/)
 
   - There are currently two type of "Read More" styles 1. "Overlay Effect with Read More" 2. Simple "Read More"
   - You can change the document length for excerpt and button text

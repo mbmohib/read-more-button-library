@@ -15,10 +15,11 @@ This is a very simple plugin for creating "Read More" buttons for long documents
 1. Copy 'read-more.js' from dist folder into assets.
 2. Your HTML Structure should be : 
 
-
+```
 <div class="selectors">
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quas exercitationem! Eligendi suscipit ipsam optio ab cum libero nisi, nam beatae velit laborum tempore. Provident neque sunt necessitatibus blanditiis reprehenderit.
 </div>
+```
 
 3. Add this line to the top of the documents
 
